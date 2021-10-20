@@ -87,6 +87,27 @@ class App extends Component {
     }
   }
 
+  listReplies = async (comment) => {
+    let response = await axios.get('http://127.0.0.1:8000/YouTube_API/reply/' + comment.id + '/');
+        this.setState({
+            commentReplies: response.data
+        });
+  }
+
+  updateLike = async (comment) => {
+    console.log(this.state.videoComments)
+    comment.like++
+    this.setState({
+      videoComments: this.state.videoComments
+    })
+  }
+
+  updateDislike = async (comment) => {
+    comment.dislike++
+  }
+
+
+
   render() { 
     return ( 
       <div className='row'>
@@ -94,7 +115,7 @@ class App extends Component {
           <SearchBar handleSearchSubmit={this.getSearchResults} />
           <VideoPlayer selectedVideo={this.state.selectedVideo} />
           <AddComment postComment={this.postComment} selectedVideo={this.state.selectedVideo} />
-          <CommentList videoComments={this.state.videoComments} postReply={this.postReply}/>
+          <CommentList videoComments={this.state.videoComments} postReply={this.postReply} commentReplies={this.state.commentReplies} updateLike={this.updateLike} updateDislike={this.updateDislike}/>
         </div>
         <div className='col-xl-4'>
           <SearchResultsList  videoSearchResults={this.state.videoSearchResults} setSelectedVideo={this.setSelectedVideo} listComments={this.listComments}/>

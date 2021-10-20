@@ -26,7 +26,7 @@ class AddReply extends Component {
         return ( 
             <form onSubmit={this.handleSubmit}>
             <input name="reply_body" onChange={this.handleChange} value={this.state.reply_body} placeholder="Add reply..."/>
-            <button type="submit">Comment</button>
+            <button type="submit">Reply</button>
             </form>
          );
     }
