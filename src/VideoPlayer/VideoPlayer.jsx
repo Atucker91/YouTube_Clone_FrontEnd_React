@@ -21,8 +21,7 @@ const VideoPlayer = (props) => {
         <div>
             <iframe title={videoTitle} src={videoLink} />
             <h3>{videoTitle}</h3>
-            <h3>{videoDescription}</h3>
-           
+            <h4>{videoDescription}</h4>
         </div>
     )
 }
